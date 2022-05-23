@@ -1,0 +1,347 @@
+.tl-nav:after,
+.timeline li:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+  overflow: hidden;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+}
+
+h3 {
+  font-size: 40px;
+  margin-top: 0;
+  font-weight: 700;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+
+/*** The timeline styles and structure ***/
+
+.tl-wrapper {
+  background: #e4f0f4;
+  min-height: 1px;
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+
+/*** The items ***/
+
+.tl-item {
+  visibility: hidden;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.tl-item .tl-copy {
+  transition: 0.6s ease;
+  transform: translate3d(60%, 0, 0);
+}
+
+.tl-item .tl-image {
+  transition: 0.6s ease;
+  transform: translate3d(0, -100%, 0);
+}
+
+.tl-item.tl-active {
+  visibility: visible;
+  z-index: 10;
+}
+
+.tl-item.tl-active .tl-copy {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.tl-item.tl-active .tl-image {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.tl-image {
+  float: left;
+  width: 70%;
+}
+
+.tl-image img {
+  display: block;
+}
+
+.tl-copy {
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  padding: 1rem;
+  background: #a72525;
+  color: #fff;
+}
+
+.tl-copy:after {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: -19px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 21px 20px 21px 0;
+  border-color: transparent #a72525 transparent transparent;
+}
+
+img {
+  width: 100%;
+}
+
+
+/*** The arrows for the items ***/
+
+.tl-items-arrow-left,
+.tl-items-arrow-right {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 40px;
+  top: 50%;
+  margin-top: -40px;
+  z-index: 100;
+}
+
+.tl-items-arrow-left:before,
+.tl-items-arrow-left:after,
+.tl-items-arrow-right:before,
+.tl-items-arrow-right:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 28px;
+  height: 2px;
+  background: #fff;
+}
+
+.tl-items-arrow-left {
+  left: 0;
+}
+
+.tl-items-arrow-left:before {
+  top: 0;
+  transform-origin: top right;
+  transform: rotate(-45deg);
+}
+
+.tl-items-arrow-left:after {
+  bottom: 0;
+  transform-origin: bottom right;
+  transform: rotate(45deg);
+}
+
+.tl-items-arrow-right {
+  right: 0;
+}
+
+.tl-items-arrow-right:before {
+  top: 0;
+  transform-origin: top left;
+  transform: rotate(45deg);
+}
+
+.tl-items-arrow-right:after {
+  bottom: 0;
+  transform-origin: bottom left;
+  transform: rotate(-45deg);
+}
+
+
+/*** The nav's styles ***/
+
+.tl-nav-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  margin: 0;
+  padding: 16px 0 0 0;
+  border-top: 1px solid rgb(176, 33, 33);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.tl-nav-wrapper:before,
+.tl-nav-wrapper:after {
+  content: "";
+  width: 38px;
+  height: 86px;
+  position: absolute;
+  top: 17px;
+  background: #e4f0f4;
+  z-index: 50;
+}
+
+.tl-nav-wrapper:before {
+  left: 0;
+}
+
+.tl-nav-wrapper:after {
+  right: 0;
+}
+
+.no-csstransforms .tl-nav-wrapper {
+  overflow-x: auto;
+}
+
+.tl-nav {
+  list-style: none;
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px dashed #a72525;
+  transition: all 0.4s ease;
+}
+
+.tl-nav li {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  float: left;
+  cursor: pointer;
+  margin-right: 1rem;
+  font-size: 12px;
+  text-align: center;
+}
+
+.tl-nav li div {
+  width: 34px;
+  height: 34px;
+  margin: auto;
+  background: rgb(240,0,0);
+  background: linear-gradient(180deg, rgba(240,0,0,1) 0%, rgba(240,0,0,1) 52%, rgba(240,240,240,1) 53%, rgba(240,240,240,1) 100%);  border: 1px solid #222224;
+  color: #000;
+  padding-top: 9px;
+  border-radius: 1000px;
+  transition: 0.6s ease;
+}
+
+.tl-nav li:hover div,
+.tl-nav li.tl-active div {
+  width: 70px;
+  height: 70px;
+  background: rgb(240,0,0);
+  background: linear-gradient(180deg, rgba(240,0,0,1) 0%, rgba(240,0,0,1) 52%, rgba(240,240,240,1) 53%, rgba(240,240,240,1) 100%);  border: 1px solid #222224;
+  font-size: 30px;
+  padding-top: 15px;
+}
+
+.tl-nav li:before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -2px;
+  background: #a72525;
+  border-radius: 1000px;
+}
+
+
+/*** The nav's nav styles ***/
+
+.tl-nav-arrow-left,
+.tl-nav-arrow-right {
+  position: absolute;
+  width: 12px;
+  height: 20px;
+  top: 50%;
+  z-index: 100;
+}
+
+.tl-nav-arrow-left:before,
+.tl-nav-arrow-left:after,
+.tl-nav-arrow-right:before,
+.tl-nav-arrow-right:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  background: #a72525;
+}
+
+.tl-nav-arrow-left {
+  left: 9px;
+}
+
+.tl-nav-arrow-left:before {
+  top: 0;
+  transform-origin: top right;
+  transform: rotate(-45deg);
+}
+
+.tl-nav-arrow-left:after {
+  bottom: 0;
+  transform-origin: bottom right;
+  transform: rotate(45deg);
+}
+
+.tl-nav-arrow-right {
+  right: 9px;
+}
+
+.tl-nav-arrow-right:before {
+  top: 0;
+  transform-origin: top left;
+  transform: rotate(45deg);
+}
+
+.tl-nav-arrow-right:after {
+  bottom: 0;
+  transform-origin: bottom left;
+  transform: rotate(-45deg);
+}
+
+.no-csstransforms .tl-nav-arrow-left,
+.no-csstransforms .tl-nav-arrow-right {
+  display: none;
+}
+
+/* Media Query */
+
+@media only screen 
+   and (min-width : 320px) {
+   /* Styles here */
+   
+}
